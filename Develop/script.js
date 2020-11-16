@@ -1,5 +1,8 @@
 // Assignment code here
 
+var generateBtn = document.querySelector("#generate");
+generateBtn.addEventListener("click", writePassword);
+
 // Char Arrays
 var lower = "abcdefghijklmnopqrstuvwxyz";
 var lowerArray = lower.split("");
@@ -17,59 +20,60 @@ function generatePassword() {
   var allCharacters = [];
   var confirmLength = window.prompt("Please chose a length of 8-128 characters: ");
 
+  // While loop to confirm length
   while(confirmLength < 8 || confirmLength > 128) {
     window.alert("You did not choose a password length bewtween 8-128 characters. Please try again.")
     var confirmLength = window.prompt("Please chose a length of 8-128 characters: ");
   }
 
+  // Statements to add char
+  if(window.confirm("Would you like lowercase letters in your password?")) {
+    Array.prototype.push.apply(allCharacters, lowerArray)
+  }
+  
+  if(window.confirm("Would you like uppercase letters in your password?")) {
+    Array.prototype.push.apply(allCharacters, upperArray)
+  }
+  
+  if(window.confirm("Would you like special characters  in your password?")) {
+    Array.prototype.push.apply(allCharacters, specialArray)
+  }
+  
+  if(window.confirm("Would you like numbers in your password?")) {
+    Array.prototype.push.apply(allCharacters, numberArray)
+  }
+
+  // While loop if none were added
   while(allCharacters.length === 0) {
+    window.alert("You need to select at least 1 type of character to generate the password.")
     if(window.confirm("Would you like lowercase letters in your password?")) {
       Array.prototype.push.apply(allCharacters, lowerArray)
     }
-  
+    
     if(window.confirm("Would you like uppercase letters in your password?")) {
       Array.prototype.push.apply(allCharacters, upperArray)
-    }
-  
+    } 
+    
     if(window.confirm("Would you like special characters  in your password?")) {
       Array.prototype.push.apply(allCharacters, specialArray)
     }
-  
+    
     if(window.confirm("Would you like numbers in your password?")) {
       Array.prototype.push.apply(allCharacters, numberArray)
     }
-
-    if(allCharacters.length === 0){
-      window.alert("You need to select at least 1 type of character to generate the password.")
-    }
-
-    for (i = 0; i < confirmLength; )
   }
 
 
+  var randomPassword = ""
 
-  
+  // For loop to generate password from built array
+  for (i = 0; i < confirmLength; i++) {
+    randomPassword = randomPassword + allCharacters[Math.floor(Math.random() * allCharacters.length)];
+    console.log(randomPassword)
+  }
+  return randomPassword;
 }
 
-// char option variables
-
-
-// running while loop to check if all char option variables are false. If so, select again
-// while loop to check for length
-// if char option is selected, array name is stored in group array
-// Assign password parameters based on selections
-
-
-
-
-
-
-
-
-
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
@@ -80,5 +84,5 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// confirmLower === false && confirmUpper === false && confirmSpecial === false && confirmNumber === false
+
