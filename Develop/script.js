@@ -84,5 +84,3 @@ function writePassword() {
 
 }
 
-// confirmLower === false && confirmUpper === false && confirmSpecial === false && confirmNumber === false
-
