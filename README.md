@@ -7,6 +7,7 @@ This application will create a random password for the user. The user will be ab
 https://jakerobs.github.io/password-generator/
 
 ## Usage
+<img width="834" alt="Screen Shot 2020-11-15 at 9 43 52 PM" src="https://user-images.githubusercontent.com/73309832/99213761-aa896300-278b-11eb-9eec-371031e09cb2.png">
 
 
 ## Instructions
